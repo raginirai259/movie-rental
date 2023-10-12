@@ -47,7 +47,7 @@ public class CustomerTest {
                 Amount owed is 34.0
                 You earned 3 frequent points
                 """;
-        String statement = rentalService.statement(customer1);
+        String statement = rentalService.generateRentalStatement(customer1);
         assertEquals(expected, statement);
     }
 

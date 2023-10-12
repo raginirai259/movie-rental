@@ -29,25 +29,10 @@ public class MovieUtility {
     }
 
     public static double calculateAmount(MovieRental rental, Movie movie) {
-        double baseRentalAmount = 0.0;
-        if (movie instanceof NewMovie) {
-            baseRentalAmount = movie.getBaseRentalAmount();
-            if (rental.getDays() > 3) {
-                baseRentalAmount = ((rental.getDays() - 3) * 1.5) + baseRentalAmount;
-            }
-
-        } else if (movie instanceof ChildrenMovie) {
-            baseRentalAmount = (double) rental.getDays() * 3;
-
-        } else if (movie instanceof RegularMovie) {
-
-            baseRentalAmount = movie.getBaseRentalAmount();
-            if (rental.getDays() > 2) {
-                baseRentalAmount = ((rental.getDays() - 2) * 1.5) + baseRentalAmount;
-            }
-        }
-        return baseRentalAmount;
+        double baseRentalAmount = movie.calculateBaseRentalAmount(rental.getDays());
+        return movie.calculateRentalAmount(baseRentalAmount);
     }
+
 
     public static int calculateFrequentRenterPoints(MovieRental rental, Movie movie) {
         int bonusPoints = 1;

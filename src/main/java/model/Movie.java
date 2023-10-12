@@ -1,20 +1,22 @@
 package model;
 
-public class Movie {
-    private String title;
-    private double baseRentalAmount;
+public abstract class Movie {
 
-    public Movie(String title, double baseRentalAmount) {
+    protected String title;
+    protected double baseRentalAmount;
 
-        this.title = title;
+    protected Movie(String title, double baseRentalAmount) {
+        this.title=title;
         this.baseRentalAmount = baseRentalAmount;
+    }
+
+    public abstract double calculateBaseRentalAmount(int days);
+
+    public double calculateRentalAmount(double baseAmount) {
+        return baseAmount;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public double getBaseRentalAmount() {
-        return baseRentalAmount;
     }
 }
